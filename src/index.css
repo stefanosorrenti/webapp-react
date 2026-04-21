@@ -5,3 +5,35 @@
 
 /* GENERICS */
 
+
+
+
+/*--------HEADER--------*/
+
+/* Navbar */
+.main-logo {
+  display: none;
+  width: 400px;
+}
+
+.logo {
+  width: 100px;
+  
+}
+
+
+
+/*@MEDIA-QUERY@*/
+
+/* Header Media Query */
+
+
+@media screen and (min-width: 768px)  {
+  .logo {
+    display: none;
+  }
+
+  .main-logo {
+    display: block;
+  }
+}

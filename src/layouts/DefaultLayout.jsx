@@ -1,15 +1,20 @@
 //IMPORTS
 
 import { Outlet } from "react-router-dom";
+import AppHeader from "../components/AppHeader";
 
 export default function DefaultLayout() {
 
-    return(
+    return (
         <>
-        <div>HEADER</div>
-        <Outlet />
-        <div>FOOTER</div>
-        
+            <AppHeader />
+            <main>
+               
+               <Outlet />
+
+            </main>
+            <div>FOOTER</div>
+
         </>
     )
 }
