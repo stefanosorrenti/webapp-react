@@ -8,7 +8,7 @@ export default function DefaultLayout() {
     return (
         <>
             <AppHeader />
-            <main>
+            <main className="mt-5">
                
                <Outlet />
 

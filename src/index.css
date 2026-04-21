@@ -20,30 +20,42 @@ img {
 
 .logo {
   width: 100px;
-  
+
 }
 
 /*--------MAIN--------*/
 
 /* Card */
 
-.img-container{
+.img-container {
   aspect-ratio: 1/1.5;
   overflow: hidden;
 }
 
-.img-container > img {
+.img-container>img {
   height: 100%;
   object-fit: cover;
   object-position: center;
 }
 
+
+
+/* Single Card */
+.movie-img-container {
+  overflow: hidden;
+  text-align: center;
+}
+
+.movie-img-container > img {
+  object-fit: cover;
+  object-position: center;
+}
 /*@MEDIA-QUERY@*/
 
 /* Header Media Query */
 
 
-@media screen and (min-width: 768px)  {
+@media screen and (min-width: 768px) {
   .logo {
     display: none;
   }

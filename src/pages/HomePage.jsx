@@ -26,6 +26,8 @@ export default function HomePage() {
                 <div className="container">
 
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-5">
+
+                        {/* ESEGUO IL MAP PER GESTIRE I DATI PRESI DALLA NOSTRA API  */}
                         {movies.map(movie => (
                             <div className="card justify-content-center align-items-center">
                                 {/* Card title */}

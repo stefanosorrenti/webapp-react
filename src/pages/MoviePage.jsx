@@ -26,19 +26,48 @@ export default function MoviesPage() {
     return (
 
         <>
-            <ul>
-                <li>{singleMovie.title}</li>
-            </ul>
-
+            {/* Movie info section */}
             <section>
-                <h3>Recensioni:</h3>
-                <ul>
-                    {singleMovie.reviews.map(review => (
-                        <li key={review.id}>{review.name} <br /> Testo: {review.text}</li>
-                    ))}
-                </ul>
+                {/* Movie img banner */}
+                <div className="movie-img-container">
+                    <img className="img-fluid w-25" src={`http://localhost:3000/movies_cover/${singleMovie.image}`} alt="" />
+                </div>
+
+                {/* Movie detail */}
+                <div className="movie-info text-center">
+
+                    <h2 className="mt-3">{singleMovie.title}</h2>
+                    <small className=" d-block text-body-secondary">Diretto da: {singleMovie.director}</small>
+                    <small className="text-body-secondary">Genere: {singleMovie.genre}</small>
+
+                    <h3>Descrizione</h3>
+
+                    <p>{singleMovie.abstract}</p>
+
+
+                </div>
+
             </section>
+
+            {/* Reviews section */}
+            <section>
+                <div className="container">
+                    <h2>RECENSIONI:</h2>
+                </div>
+            </section>
+
         </>
+
+        /* 
+    
+    
+    "genre": "Science Fiction",
+    "release_year": 2010,
+    "abstract": "A skilled thief is given a chance at redemption if he can successfully perform inception.",
+    "image": "inception.jpg",
+    "created_at": "2024-11-29T10:40:13.000Z",
+    "updated_at": "2025-05-22T10:55:27.000Z",
+    "reviews": [ */
 
 
     )
