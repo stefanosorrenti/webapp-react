@@ -9,19 +9,37 @@ export default function MoviesPage() {
     const { id } = useParams()
     const [singleMovie, setSingleMovie] = useState([])
 
-    useEffect(()=> {
+    useEffect(() => {
         axios.get(`http://localhost:3000/movies/${id}`)
-    .then(res => {
+            .then(res => {
 
-        setSingleMovie(res.data)
-    })
+                setSingleMovie(res.data)
+            })
     }, [])
 
+
+
+
     //console.log(singleMovie);
-    if(singleMovie.length === 0) return <h1>Loading...</h1>
+    if (singleMovie.length === 0) return <h1>Loading...</h1>
+
     return (
-        <ul>
-            <li>{singleMovie.title}</li>
-        </ul>
+
+        <>
+            <ul>
+                <li>{singleMovie.title}</li>
+            </ul>
+
+            <section>
+                <h3>Recensioni:</h3>
+                <ul>
+                    {singleMovie.reviews.map(review => (
+                        <li key={review.id}>{review.name} <br /> Testo: {review.text}</li>
+                    ))}
+                </ul>
+            </section>
+        </>
+
+
     )
 }

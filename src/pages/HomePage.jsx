@@ -1,6 +1,7 @@
 //IMPORTS
 import { useState, useEffect } from "react"
 import axios from "axios"
+import { Link } from "react-router-dom"
 
 export default function HomePage() {
 
@@ -16,12 +17,12 @@ export default function HomePage() {
     }, [])
 
     
-    
     return(
         
         <ul>
             {movies.map(movie => (
-                <li key={movie.id}>{movie.title}</li>
+                 <Link key={movie.id} to={`/movie/${movie.id}`}><li>{movie.title}</li></Link> 
+                
             ))}
         </ul>
 
