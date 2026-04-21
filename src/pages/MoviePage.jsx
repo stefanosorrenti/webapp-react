@@ -28,46 +28,51 @@ export default function MoviesPage() {
         <>
             {/* Movie info section */}
             <section>
-                {/* Movie img banner */}
-                <div className="movie-img-container">
-                    <img className="img-fluid w-25" src={`http://localhost:3000/movies_cover/${singleMovie.image}`} alt="" />
+                <div className="container">
+                    {/* Movie img banner */}
+                    <div className="movie-img-container">
+                        <img className="img-fluid w-25" src={`http://localhost:3000/movies_cover/${singleMovie.image}`} alt="" />
+                    </div>
+
+                    {/* Movie detail */}
+                    <div className="movie-info text-center">
+
+                        <h2 className="mt-3">{singleMovie.title}</h2>
+                        <small className=" d-block text-body-secondary">Diretto da: {singleMovie.director}</small>
+                        <small className="text-body-secondary">Genere: {singleMovie.genre}</small>
+
+                        <h3>Descrizione</h3>
+
+                        <p>{singleMovie.abstract}</p>
+
+
+                    </div>
                 </div>
-
-                {/* Movie detail */}
-                <div className="movie-info text-center">
-
-                    <h2 className="mt-3">{singleMovie.title}</h2>
-                    <small className=" d-block text-body-secondary">Diretto da: {singleMovie.director}</small>
-                    <small className="text-body-secondary">Genere: {singleMovie.genre}</small>
-
-                    <h3>Descrizione</h3>
-
-                    <p>{singleMovie.abstract}</p>
-
-
-                </div>
-
             </section>
 
             {/* Reviews section */}
             <section>
-                <div className="container">
+                <div className="container text-center">
                     <h2>RECENSIONI:</h2>
+                    <div className="row row-cols-1 mt-3">
+
+                    {singleMovie.reviews.map(review => (
+                        <div className="col card align-items-start p-5">
+
+                            <div className="card-head">
+                                <span><strong>Nome:</strong> {review.name}</span>
+                                <span><strong>Voto: </strong>{review.vote}</span>
+                            </div>
+
+                            <span><strong>Contenuto: </strong>{review.text}</span>
+                        </div>
+                    ))}
+
+                    </div>
                 </div>
             </section>
 
         </>
-
-        /* 
-    
-    
-    "genre": "Science Fiction",
-    "release_year": 2010,
-    "abstract": "A skilled thief is given a chance at redemption if he can successfully perform inception.",
-    "image": "inception.jpg",
-    "created_at": "2024-11-29T10:40:13.000Z",
-    "updated_at": "2025-05-22T10:55:27.000Z",
-    "reviews": [ */
 
 
     )

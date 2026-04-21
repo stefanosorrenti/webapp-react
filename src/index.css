@@ -50,6 +50,12 @@ img {
   object-fit: cover;
   object-position: center;
 }
+
+.card-head {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
 /*@MEDIA-QUERY@*/
 
 /* Header Media Query */
