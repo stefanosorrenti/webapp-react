@@ -4,7 +4,9 @@
 /* UTILITY */
 
 /* GENERICS */
-
+img {
+  max-width: 100%;
+}
 
 
 
@@ -21,7 +23,20 @@
   
 }
 
+/*--------MAIN--------*/
 
+/* Card */
+
+.img-container{
+  aspect-ratio: 1/1.5;
+  overflow: hidden;
+}
+
+.img-container > img {
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
 
 /*@MEDIA-QUERY@*/
 
