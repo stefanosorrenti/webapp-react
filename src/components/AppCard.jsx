@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import AppModal from "./AppMoviesModal";
+import AppMoviesModal from "./AppMoviesModal";
 
 
 export default function AppCard({ id, array, title, image, director, genre, release_year, abstract }) {
@@ -22,46 +24,14 @@ export default function AppCard({ id, array, title, image, director, genre, rele
 
             {/* ESEGUO IL MAP PER GESTIRE I DATI PRESI DALLA NOSTRA API  */}
             {array.map(element => (
-                <div key={element.id} className="card justify-content-center align-items-center position-relative mod">
+                <div key={element.id} className="card justify-content-center align-items-center ">
 
 
                     {/* Card title */}
                     <h3 className="card-title fs-3">{element.title}</h3>
 
                     {/* Modal */}
-                    {modal && selected === element.id && (
-                        /* Backdrop */
-                        <div class="modal show d-block soft-dark-bgc" tabindex="-1">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-
-                                    {/* Modal header */}
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">{element.title}</h5>
-                                        
-                                    </div>
-
-                                    {/* Modal body */}
-                                    <div class="modal-body">
-                                        <p>
-                                            <strong>Descriione: </strong>{element.abstract}
-                                            <ul className="mt-3">
-                                                <li><strong>Diretto da: </strong>{element.director}</li>
-                                                <li><strong>Genere: </strong>{element.genre}</li>
-                                                <li><strong>Anno: </strong>{element.release_year}</li>
-                                            </ul>
-                                        </p>
-                                    </div>
-
-                                    {/* Modal footer */}
-                                    <div class="modal-footer">
-                                        <button onClick={() => setModal(false)} type="button" class="btn btn-secondary" data-bs-dismiss="modal">Indietro</button>
-                                        <Link className="btn btn-primary" to={`/movie/${element.id}`}>Scopri di piu...</Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    )}
+                    <AppMoviesModal movie={element} modalValue={modal} selectedValue={selected} />
 
                     {/* Card-img */}
 
@@ -72,7 +42,7 @@ export default function AppCard({ id, array, title, image, director, genre, rele
                     </div>
 
                     {/* Card text */}
-                    <div className="card-body">
+                    <div className="card-body d-md-none">
                         {/* List of element data */}
                         <ul className="list-group list-group-flush">
                             <li className="list-group-item">
@@ -92,8 +62,10 @@ export default function AppCard({ id, array, title, image, director, genre, rele
                                 {element.abstract}
                             </li>
                         </ul>
-
+                                    
                     </div>
+                        
+                        <Link className="btn btn-primary my-3 d-md-none" to={`/movie/${element.id}`}>Scopri di piu...</Link>
 
                 </div >
             ))

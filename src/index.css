@@ -90,17 +90,6 @@ div.hover-effect{
   justify-content: space-between;
 }
 
-/* Modal */
-.dynamic-modal {
-  width: 100vh; 
-  height: 100vh;
-  position: absolute;
-  top: 0%;
-  left: 50%;
-  translate: -50% -0%;
-  z-index: 100000;
-  background-color: rgba(0,0,0,0.9)
-}
 
 
 
@@ -120,3 +109,6 @@ div.hover-effect{
     display: block;
   }
 }
+
+/* Main media query */
+
