@@ -1,4 +1,4 @@
-export default function AppMovieBanner({ image, title, director, genre, abstract }) {
+export default function AppMovieBanner({ image, title, director, genre, abstract, avg }) {
 
 
 
@@ -14,8 +14,9 @@ export default function AppMovieBanner({ image, title, director, genre, abstract
             <div className="movie-info text-center">
 
                 <h2 className="mt-3">{title}</h2>
-                <small className=" d-block text-body-secondary">Diretto da: {director}</small>
-                <small className="text-body-secondary">Genere: {genre}</small>
+                <small className="d-block text-body-secondary">Diretto da: {director}</small>
+                <small className="d-block text-body-secondary">Genere: {genre}</small>
+                <small className="text-body-secondary">Media voto: {parseFloat(avg).toFixed(2)}</small>
 
                 <h3>Descrizione</h3>
 

@@ -35,18 +35,25 @@ export default function MoviesPage() {
             {/* Movie info section */}
             <section>
                 <div className="container">
-                    <AppMovieBanner image={singleMovie.image} title={singleMovie.title} director={singleMovie.director} genre={singleMovie.genre} abstract={singleMovie.abstract} />
+                    <AppMovieBanner
+                        image={singleMovie.image}
+                        title={singleMovie.title}
+                        director={singleMovie.director}
+                        genre={singleMovie.genre}
+                        abstract={singleMovie.abstract}
+                        avg={singleMovie.avg_vote}
+                    />
                 </div>
             </section>
 
             {/* Reviews section */}
             <section>
                 <div className="container text-center">
-                    
-                    
+
+
                     {/* Form */}
                     <AppForm />
-            
+
                     {/* Reviews*/}
                     <div className="row row-cols-1 mt-3">
                         <h2>RECENSIONI:</h2>
