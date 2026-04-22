@@ -39,6 +39,10 @@ export default function HomePage() {
                             abstract={movies.abstract}
                         />
 
+                       {/*  <div className="modal">
+
+                        </div> */}
+
                     </div>
 
                 </div>

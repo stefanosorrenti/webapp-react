@@ -7,7 +7,7 @@ export default function AppHeader() {
             <nav className="navbar navbar-expand-md bg-dark-subtle ">
                 <div className="container-fluid flex-md-column">
                     {/* NavBar logo */}
-                    <a className="navbar-brand" href="#">
+                    <a className="navbar-brand" href="/">
                         <img className="logo" src="../../public/imgs/logo.png" alt="" />
                         <img className="main-logo" src="../../public/imgs/main-logo.png" alt="" />
                     </a>
