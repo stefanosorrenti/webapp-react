@@ -18,7 +18,7 @@ export default function AppReview({ name, vote }) {
         
         return stars
     }
-
+    
 
 
 

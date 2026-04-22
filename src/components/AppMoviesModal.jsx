@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 
 
-export default function AppMoviesModal({movie, modalValue, selectedValue}) {
+export default function AppMoviesModal({movie, modalValue, selectedValue,}) {
 
     return (
 
@@ -12,18 +12,18 @@ export default function AppMoviesModal({movie, modalValue, selectedValue}) {
 
             {modalValue && selectedValue === movie.id && (
                 /* Backdrop */
-                <div class="modal show d-block soft-dark-bgc" tabindex="-1">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
+                <div className="modal show d-block soft-dark-bgc" tabindex="-1">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
 
                             {/* Modal header */}
-                            <div class="modal-header">
-                                <h5 class="modal-title">{movie.title}</h5>
+                            <div className="modal-header">
+                                <h5 className="modal-title">{movie.title}</h5>
 
                             </div>
 
                             {/* Modal body */}
-                            <div class="modal-body">
+                            <div className="modal-body">
                                 <p>
                                     <strong>Descriione: </strong>{movie.abstract}
                                     <ul className="mt-3">
@@ -35,8 +35,8 @@ export default function AppMoviesModal({movie, modalValue, selectedValue}) {
                             </div>
 
                             {/* Modal footer */}
-                            <div class="modal-footer">
-                                <button onClick={() => setModal(false)} type="button" class="btn btn-secondary" data-bs-dismiss="modal">Indietro</button>
+                            <div className="modal-footer">
+                                <button onClick={() => setModal(false)} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Indietro</button>
                                 <Link className="btn btn-primary" to={`/movie/${movie.id}`}>Scopri di piu...</Link>
                             </div>
                         </div>
