@@ -1,7 +1,13 @@
 /* IMPORTS */
 @import url('bootstrap');
 @import url('bootstrap-icons');
+
+
+
 /* UTILITY */
+.soft-dark-bgc {
+  background-color: rgba(0, 0, 0, 0.9);
+}
 
 /* GENERICS */
 img {
@@ -85,9 +91,18 @@ div.hover-effect{
 }
 
 /* Modal */
-.modal {
-  border: 2;
+.dynamic-modal {
+  width: 100vh; 
+  height: 100vh;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  translate: -50% -0%;
+  z-index: 100000;
+  background-color: rgba(0,0,0,0.9)
 }
+
+
 
 /*--------FOOTER--------*/
 

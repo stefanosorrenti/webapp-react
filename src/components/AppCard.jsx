@@ -8,26 +8,67 @@ export default function AppCard({ id, array, title, image, director, genre, rele
     //DATA
     const [hovered, setHovered] = useState(false)
     const [selected, setSelected] = useState(0)
-
-    function attiva(elmentId) {
+    const [modal, setModal] = useState(false)
+    function getHover(elmentId) {
         setSelected(elmentId)
         setHovered(true)
-        
+
     }
     return (
 
         <>
+
+
+
             {/* ESEGUO IL MAP PER GESTIRE I DATI PRESI DALLA NOSTRA API  */}
             {array.map(element => (
-                <div key={element.id} className="card justify-content-center align-items-center">
+                <div key={element.id} className="card justify-content-center align-items-center position-relative mod">
+
+
                     {/* Card title */}
                     <h3 className="card-title fs-3">{element.title}</h3>
 
+                    {/* Modal */}
+                    {modal && selected === element.id && (
+                        /* Backdrop */
+                        <div class="modal show d-block soft-dark-bgc" tabindex="-1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    {/* Modal header */}
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">{element.title}</h5>
+                                        
+                                    </div>
+
+                                    {/* Modal body */}
+                                    <div class="modal-body">
+                                        <p>
+                                            <strong>Descriione: </strong>{element.abstract}
+                                            <ul className="mt-3">
+                                                <li><strong>Diretto da: </strong>{element.director}</li>
+                                                <li><strong>Genere: </strong>{element.genre}</li>
+                                                <li><strong>Anno: </strong>{element.release_year}</li>
+                                            </ul>
+                                        </p>
+                                    </div>
+
+                                    {/* Modal footer */}
+                                    <div class="modal-footer">
+                                        <button onClick={() => setModal(false)} type="button" class="btn btn-secondary" data-bs-dismiss="modal">Indietro</button>
+                                        <Link className="btn btn-primary" to={`/movie/${element.id}`}>Scopri di piu...</Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
                     {/* Card-img */}
-                    <div onMouseEnter = {() => attiva(element.id) } onMouseLeave={() => setHovered(false)}  className="img-container" >
+
+                    <div onMouseEnter={() => getHover(element.id)} onMouseLeave={() => setHovered(false)} onClick={() => setModal(true)} className="img-container" >
                         <img src={`http://localhost:3000/movies_cover/${element.image}`} alt="" />
-                            <div className={ hovered && selected === element.id ? 'hover-effect' : 'hover-effect d-none'}><i class="bi bi-eye-fill"></i></div>
-                        
+                        <div className={hovered && selected === element.id ? 'hover-effect' : 'hover-effect d-none'}><i className="bi bi-eye-fill"></i></div>
+
                     </div>
 
                     {/* Card text */}
@@ -54,10 +95,9 @@ export default function AppCard({ id, array, title, image, director, genre, rele
 
                     </div>
 
-                    <Link className="btn btn-primary mb-3" to={`/movie/${element.id}`}>SCOPRI DI PIU'</Link>
-
-                </div>
-            ))}
+                </div >
+            ))
+            }
         </>
     )
 }

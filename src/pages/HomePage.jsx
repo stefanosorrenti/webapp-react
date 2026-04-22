@@ -1,5 +1,5 @@
 //IMPORTS
-import { useState, useEffect } from "react"
+import { useState, useEffect, use } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
 import AppCard from "../components/AppCard"
@@ -8,7 +8,7 @@ export default function HomePage() {
 
     //DATA
     const [movies, setMovies] = useState([])
-
+    const [renderModal, setRenderModal] = useState(false)
     useEffect(() => {
         axios.get('http://localhost:3000/movies')
             .then(res => {
@@ -23,8 +23,12 @@ export default function HomePage() {
 
         <>
             {/* CARDS SECTION */}
-            <section>
+            <section className="position-relative">
                 <div className="container">
+
+                    {/* Modal */}
+
+                    
 
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-5">
 
@@ -37,11 +41,9 @@ export default function HomePage() {
                             genre={movies.genre}
                             release_year={movies.release_year}
                             abstract={movies.abstract}
+                            
+
                         />
-
-                       {/*  <div className="modal">
-
-                        </div> */}
 
                     </div>
 
