@@ -2,6 +2,8 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import AppMovieBanner from "../components/AppMovieBanner"
+import AppListOfReviews from "../components/AppListOfReviews"
 
 export default function MoviesPage() {
 
@@ -29,24 +31,7 @@ export default function MoviesPage() {
             {/* Movie info section */}
             <section>
                 <div className="container">
-                    {/* Movie img banner */}
-                    <div className="movie-img-container">
-                        <img className="img-fluid w-25" src={`http://localhost:3000/movies_cover/${singleMovie.image}`} alt="" />
-                    </div>
-
-                    {/* Movie detail */}
-                    <div className="movie-info text-center">
-
-                        <h2 className="mt-3">{singleMovie.title}</h2>
-                        <small className=" d-block text-body-secondary">Diretto da: {singleMovie.director}</small>
-                        <small className="text-body-secondary">Genere: {singleMovie.genre}</small>
-
-                        <h3>Descrizione</h3>
-
-                        <p>{singleMovie.abstract}</p>
-
-
-                    </div>
+                    <AppMovieBanner image={singleMovie.image} title={singleMovie.title} director={singleMovie.director} genre={singleMovie.genre} abstract={singleMovie.abstract} />
                 </div>
             </section>
 
@@ -56,17 +41,15 @@ export default function MoviesPage() {
                     <h2>RECENSIONI:</h2>
                     <div className="row row-cols-1 mt-3">
 
-                        {singleMovie.reviews.map(review => (
-                            <div className="col card align-items-start p-5">
-
-                                <div className="card-head">
-                                    <span><strong>Nome:</strong> {review.name}</span>
-                                    <span><strong>Voto: </strong>{review.vote}</span>
-                                </div>
-
-                                <span><strong>Contenuto: </strong>{review.text}</span>
-                            </div>
-                        ))}
+                        {/* Inserisco manualmente le chiavi nelle props e non solo l'array perchè voglio rendere riutilizzabile il componente
+                        se mettessi solo l'array (singleMovie.reviews) il componente sarebbe meno flessibile (se le chiavi del componente cambiano ad esempio?) */}
+                        <AppListOfReviews
+                            array={singleMovie.reviews}
+                            id={singleMovie.id}
+                            name={singleMovie.name}
+                            vote={singleMovie.vote}
+                            text={singleMovie.text}
+                        />
 
                     </div>
                 </div>
