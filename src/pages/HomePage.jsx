@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
+import AppCard from "../components/AppCard"
 
 export default function HomePage() {
 
@@ -11,12 +12,12 @@ export default function HomePage() {
     useEffect(() => {
         axios.get('http://localhost:3000/movies')
             .then(res => {
-                console.log(res.data);
+                //console.log(res.data);
                 setMovies(res.data)
+                //console.log(movies.title);
             })
     }, [])
 
-    console.log();
 
     return (
 
@@ -27,45 +28,16 @@ export default function HomePage() {
 
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-5">
 
-                        {/* ESEGUO IL MAP PER GESTIRE I DATI PRESI DALLA NOSTRA API  */}
-                        {movies.map(movie => (
-                            <div className="card justify-content-center align-items-center">
-                                {/* Card title */}
-                                <h3 className="card-title fs-3">{movie.title}</h3>
-
-                                {/* Card-img */}
-                                <div className="img-container">
-                                    <img src={`http://localhost:3000/movies_cover/${movie.image}`} alt="" />
-                                </div>
-
-                                {/* Card text */}
-                                <div className="card-body">
-                                    {/* List of movie data */}
-                                    <ul className="list-group list-group-flush">
-                                        <li className="list-group-item">
-                                            <span className="fw-bold">Diretto da: </span>
-                                            {movie.director}
-                                        </li>
-                                        <li className="list-group-item">
-                                            <span className="fw-bold">Genere: </span>
-                                            {movie.genre}
-                                        </li>
-                                        <li className="list-group-item">
-                                            <span className="fw-bold">Anno d'uscita: </span>
-                                            {movie.release_year}
-                                        </li>
-                                        <li className="list-group-item">
-                                            <span className="fw-bold">Descrizione: </span>
-                                            {movie.abstract}
-                                        </li>
-                                    </ul>
-                                    
-                                </div>
-
-                                <Link className="btn btn-primary mb-3" to={`/movie/${movie.id}`}>SCOPRI DI PIU'</Link>
-
-                            </div>
-                        ))}
+                        <AppCard  //Creo un componente apposito per la carda, passando come proprietà tutti dati recuperati dalle mie api
+                            id={movies.id}
+                            array={movies}
+                            title={movies.title}
+                            image={movies.image}
+                            director={movies.director}
+                            genre={movies.genre}
+                            release_year={movies.release_year}
+                            abstract={movies.abstract}
+                        />
 
                     </div>
 
