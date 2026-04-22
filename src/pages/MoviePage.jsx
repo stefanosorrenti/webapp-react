@@ -56,17 +56,17 @@ export default function MoviesPage() {
                     <h2>RECENSIONI:</h2>
                     <div className="row row-cols-1 mt-3">
 
-                    {singleMovie.reviews.map(review => (
-                        <div className="col card align-items-start p-5">
+                        {singleMovie.reviews.map(review => (
+                            <div className="col card align-items-start p-5">
 
-                            <div className="card-head">
-                                <span><strong>Nome:</strong> {review.name}</span>
-                                <span><strong>Voto: </strong>{review.vote}</span>
+                                <div className="card-head">
+                                    <span><strong>Nome:</strong> {review.name}</span>
+                                    <span><strong>Voto: </strong>{review.vote}</span>
+                                </div>
+
+                                <span><strong>Contenuto: </strong>{review.text}</span>
                             </div>
-
-                            <span><strong>Contenuto: </strong>{review.text}</span>
-                        </div>
-                    ))}
+                        ))}
 
                     </div>
                 </div>

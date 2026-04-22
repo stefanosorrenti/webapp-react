@@ -2,7 +2,7 @@ export default function AppHeader() {
 
 
     return (
-        <>
+        <header>
             {/* NavBar */}        
             <nav className="navbar navbar-expand-md bg-dark-subtle ">
                 <div className="container-fluid flex-md-column">
@@ -28,6 +28,6 @@ export default function AppHeader() {
                 </div>
             </nav>
 
-        </>
+        </header>
     )
 }
