@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 
 
-export default function AppMoviesModal({movie, modalValue, selectedValue,}) {
-
+export default function AppMoviesModal({movie, setModalValue, modalValue, selectedValue,}) {
+    
     return (
 
         /* Modal */
@@ -36,7 +36,7 @@ export default function AppMoviesModal({movie, modalValue, selectedValue,}) {
 
                             {/* Modal footer */}
                             <div className="modal-footer">
-                                <button onClick={() => setModal(false)} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Indietro</button>
+                                <button onClick={() => setModalValue(false)} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Indietro</button>
                                 <Link className="btn btn-primary" to={`/movie/${movie.id}`}>Scopri di piu...</Link>
                             </div>
                         </div>

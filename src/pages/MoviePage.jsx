@@ -52,7 +52,7 @@ export default function MoviesPage() {
 
 
                     {/* Form */}
-                    <AppForm />
+                    <AppForm paramsId={id} />
 
                     {/* Reviews*/}
                     <div className="row row-cols-1 mt-3">

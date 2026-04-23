@@ -11,6 +11,7 @@ export default function AppCard({ id, array, title, image, director, genre, rele
     const [hovered, setHovered] = useState(false)
     const [selected, setSelected] = useState(0)
     const [modal, setModal] = useState(false)
+    
     function getHover(elmentId) {
         setSelected(elmentId)
         setHovered(true)
@@ -31,7 +32,7 @@ export default function AppCard({ id, array, title, image, director, genre, rele
                     <h3 className="card-title fs-3">{element.title}</h3>
 
                     {/* Modal */}
-                    <AppMoviesModal movie={element} modalValue={modal} selectedValue={selected} />
+                    <AppMoviesModal movie={element} setModalValue={setModal} modalValue={modal} selectedValue={selected} />
 
                     {/* Card-img */}
 
