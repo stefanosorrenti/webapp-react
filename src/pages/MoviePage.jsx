@@ -14,14 +14,16 @@ export default function MoviesPage() {
     const { id } = useParams()
     const [singleMovie, setSingleMovie] = useState([])
     const [renderForm, setRenderForm] = useState(false)
+    const [movieApi, setMovieAPi] = useState(
 
-    useEffect(() => {
         axios.get(`http://localhost:3000/movies/${id}`)
             .then(res => {
 
                 setSingleMovie(res.data)
             })
-    }, [])
+    )
+    
+    useEffect(() => {movieApi}, [])
 
 
 
@@ -52,7 +54,7 @@ export default function MoviesPage() {
 
 
                     {/* Form */}
-                    <AppForm paramsId={id} />
+                    <AppForm paramsId={id} reviewRefresh={movieApi} />
 
                     {/* Reviews*/}
                     <div className="row row-cols-1 mt-3">
