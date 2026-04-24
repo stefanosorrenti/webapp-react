@@ -31,6 +31,10 @@ img {
 
 /*--------MAIN--------*/
 
+
+main{
+  background-color: rgb(174, 162, 162);
+}
 /* Card */
 
 .img-container {

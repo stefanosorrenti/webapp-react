@@ -14,9 +14,10 @@ export default function AppForm({ paramsId, reviewRefresh }) {
         name: '',
         text: '',
         vote: ''
-    })
+    });
+
     const [reviewAdded, setRewviewAdded] = useState(null)
-    const [apiError, setApiError] = useState({})
+   
 
 
     //FUNCTIONS 
@@ -27,27 +28,39 @@ export default function AppForm({ paramsId, reviewRefresh }) {
 
     function handlerSubmit(e) {
         e.preventDefault()
-        setRenderForm(false)
-
-
-
-
-        //POST API CALL
-        axios.post(`http://localhost:3000/movies/${paramsId}/review`, formData)
-            .then(res => {
-                console.log(res.data);
-                setRewviewAdded(true)
-                reviewRefresh
-                
-            }
-        )
         
-        .catch(error => {
-            setApiError(error)
+        const {name, text, vote} = formData
+        if(!name || !text || !vote) {
             setRewviewAdded(false)
-            console.log(error.data);
-            
-        })
+
+        } else {
+
+            //POST API CALL
+            axios.post(`http://localhost:3000/movies/${paramsId}/review`, formData)
+                .then(res => {
+                    console.log(res.data);
+                    setRewviewAdded(true)
+                    setFormData({
+                        name: '',
+                        text: '',
+                        vote: ''
+    
+                    })
+                    setRenderForm(false)
+                    reviewRefresh
+                    
+    
+                }
+                )
+    
+                .catch(error => {
+                    console.log(error.response.data); //MESSAGGIO DI ERRORE
+                    
+                    setRewviewAdded(false)
+    
+                })
+        }
+
 
         //console.log(formData, paramsId);
 
@@ -64,14 +77,14 @@ export default function AppForm({ paramsId, reviewRefresh }) {
     return (
 
 
-        <>  
-            
+        <>
+
             {/* Alerts */}
             {reviewAdded && (
 
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     Recensione inviata!
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onClick={() => {setRewviewAdded(null)}}></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onClick={() => { setRewviewAdded(null) }}></button>
                 </div>
 
             )}
@@ -80,7 +93,7 @@ export default function AppForm({ paramsId, reviewRefresh }) {
 
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     Compila tutti i campi!
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onClick={() => {setRewviewAdded(null)}}></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onClick={() => { setRewviewAdded(null) }}></button>
                 </div>
             )}
 
@@ -98,7 +111,7 @@ export default function AppForm({ paramsId, reviewRefresh }) {
 
                         {/* Name form */}
                         <div className="form-floating mb-3">
-                            <input type="text" className="form-control" name="name" id="name" placeholder="Nome" value={formData.name} onChange={getFormData} required />
+                            <input type="text" className="form-control" name="name" id="name" placeholder="Nome" value={formData.name} onChange={getFormData}  required/>
                             <label htmlFor="name">Nome</label>
                         </div>
 
@@ -110,8 +123,8 @@ export default function AppForm({ paramsId, reviewRefresh }) {
 
                         {/* Stars form */}
                         <div className="form-floating">
-                            <select className="form-select" name="vote" id="stars" aria-label="Floating label disabled select example" value={formData.stars} onChange={getFormData} required >
-
+                            <select className="form-select" name="vote" id="stars" aria-label="Floating label disabled select example" value={formData.stars} onChange={getFormData} required>
+                                <option selected value="" hidden>Scegli il numero di stelle...</option>
                                 <option className=" text-warning" value="1">★</option>
                                 <option className=" text-warning" value="2">★★</option>
                                 <option className=" text-warning" value="3">★★★</option>

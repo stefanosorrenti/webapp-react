@@ -12,7 +12,7 @@ export default function AppMoviesModal({movie, setModalValue, modalValue, select
 
             {modalValue && selectedValue === movie.id && (
                 /* Backdrop */
-                <div className="modal show d-block soft-dark-bgc" tabindex="-1">
+                <div className="modal show d-block soft-dark-bgc" tabIndex="-1">
                     <div className="modal-dialog">
                         <div className="modal-content">
 

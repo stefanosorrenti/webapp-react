@@ -6,20 +6,22 @@ import AppMovieBanner from "../components/AppMovieBanner"
 import AppListOfReviews from "../components/AppListOfReviews"
 import { use } from "react"
 import AppForm from "../components/AppForm"
-
-
+import { useLoader } from "../../contexts/LoaderContext"
+import { Puff } from "react-loader-spinner"
 export default function MoviesPage() {
 
     //DATA
+    const { setLoader, loader } = useLoader()
     const { id } = useParams()
     const [singleMovie, setSingleMovie] = useState([])
     const [renderForm, setRenderForm] = useState(false)
     const [movieApi, setMovieAPi] = useState(
-
+        
         axios.get(`http://localhost:3000/movies/${id}`)
             .then(res => {
 
                 setSingleMovie(res.data)
+                setLoader(false)
             })
     )
     
@@ -29,7 +31,16 @@ export default function MoviesPage() {
 
 
     //console.log(singleMovie);
-    if (singleMovie.length === 0) return <h1>Loading...</h1>
+    if (singleMovie.length === 0) return <Puff
+                visible={true}
+                height="80"
+                width="80"
+                color="#ee250f"
+                ariaLabel="puff-loading"
+                
+                wrapperClass="d-flex justify-content-center align-items-center vh-100"
+        
+        />
 
     return (
 
