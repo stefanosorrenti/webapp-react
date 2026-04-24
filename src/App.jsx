@@ -25,10 +25,12 @@ function App() {
             <Route path="/movie/:id" element={<MoviesPage />} />
             <Route path="/movie/admin" element={<AdminPage />} />
           </Route>
-          
+          <Route path="*" element={<h1>Pagina non trovata</h1>} />
+
         </Routes>
 
       </LoaderProvider>
+      
     </BrowserRouter>
 
 

@@ -24,14 +24,14 @@ export default function AppMoviesModal({movie, setModalValue, modalValue, select
 
                             {/* Modal body */}
                             <div className="modal-body">
-                                <p>
-                                    <strong>Descriione: </strong>{movie.abstract}
+                                <span>
+                                    <strong>Descrizione: </strong>{movie.abstract}
                                     <ul className="mt-3">
                                         <li><strong>Diretto da: </strong>{movie.director}</li>
                                         <li><strong>Genere: </strong>{movie.genre}</li>
                                         <li><strong>Anno: </strong>{movie.release_year}</li>
                                     </ul>
-                                </p>
+                                </span>
                             </div>
 
                             {/* Modal footer */}
