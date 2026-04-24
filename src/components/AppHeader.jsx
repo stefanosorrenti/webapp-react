@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function AppHeader() {
 
 
@@ -20,9 +22,10 @@ export default function AppHeader() {
                     {/* NavBar links */}
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav">
-                            <a className="nav-link active" aria-current="page" href="/">Home</a>
-                            <a className="nav-link" href="#">Top films</a>
-                            <a className="nav-link" href="#">Top serie TV</a>
+                            <Link to={"/"} className="nav-link active" aria-current="page">Home</Link>
+                            <Link to={"/"} className="nav-link" >Top films</Link>
+                            <Link to={"/"} className="nav-link" >Top serie TV</Link>
+                            <Link to={"/movie/admin"} className="nav-link">Admin</Link>
                         </div>
                     </div>
                 </div>

@@ -4,6 +4,7 @@ import DefaultLayout from "./layouts/DefaultLayout";
 import HomePage from "./pages/HomePage";
 import MoviesPage from "./pages/MoviePage";
 import { LoaderProvider } from "../contexts/LoaderContext";
+import AdminPage from "./pages/AdminPage";
 
 
 
@@ -22,6 +23,7 @@ function App() {
           <Route element={<DefaultLayout />}>
             <Route index element={<HomePage />} />
             <Route path="/movie/:id" element={<MoviesPage />} />
+            <Route path="/movie/admin" element={<AdminPage />} />
           </Route>
           
         </Routes>
